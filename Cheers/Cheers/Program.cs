@@ -30,14 +30,28 @@ namespace Cheers
             DateTime convertedBD = DateTime.Parse(birthday);
 
             int difference = (convertedBD-today).Days;
-            //difference++;
+            difference++;
             if (difference < 0)
             {
                 difference = 365 + difference;
             }
             if(difference == 0)
             {
-                Console.WriteLine("It's your birthday!");
+                if(convertedBD.Day == today.Day)
+                {
+                    Console.WriteLine("It's your birthday!");
+                }
+                else
+                {
+                    if(convertedBD.Day > today.Day)
+                    {
+                        Console.WriteLine(1 + " day till your birthday");
+                    }
+                    else
+                    {
+                        Console.WriteLine("365 days till your birthday");
+                    }
+                }
             }
             else
             {
