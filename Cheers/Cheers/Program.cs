@@ -27,36 +27,44 @@ namespace Cheers
 
             //Birthday----------------------------
             DateTime today = DateTime.Now;
-            DateTime convertedBD = DateTime.Parse(birthday);
-
-            int difference = (convertedBD-today).Days;
-            difference++;
-            if (difference < 0)
+            try
             {
-                difference = 365 + difference;
-            }
-            if(difference == 0)
-            {
-                if(convertedBD.Day == today.Day)
+                DateTime convertedBD = DateTime.Parse(birthday);
+                int difference = (convertedBD - today).Days;
+                difference++;
+                if (difference < 0)
                 {
-                    Console.WriteLine("It's your birthday!");
+                    difference = 365 + difference;
                 }
-                else
+                if (difference == 0)
                 {
-                    if(convertedBD.Day > today.Day)
+                    if (convertedBD.Day == today.Day)
                     {
-                        Console.WriteLine(1 + " day till your birthday");
+                        Console.WriteLine("It's your birthday!");
                     }
                     else
                     {
-                        Console.WriteLine("365 days till your birthday");
+                        if (convertedBD.Day > today.Day)
+                        {
+                            Console.WriteLine(1 + " day till your birthday");
+                        }
+                        else
+                        {
+                            Console.WriteLine("365 days till your birthday");
+                        }
                     }
                 }
+                else
+                {
+                    Console.WriteLine(difference + " days till your birthday");
+                }
             }
-            else
+            catch
             {
-                Console.WriteLine(difference + " days till your birthday");
+                Console.WriteLine("not a valid birthday");
             }
+
+            
 
             Console.WriteLine("Press any key to finish . . .");
             Console.ReadKey();
